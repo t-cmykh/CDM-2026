@@ -1,0 +1,35 @@
+{
+  "name": "Coupe du Monde 2026",
+  "short_name": "CDM 2026",
+  "description": "Calendrier officiel de la FIFA World Cup 2026 — 104 matchs, 48 équipes, suivi par équipe",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0A0A0F",
+  "theme_color": "#0A0A0F",
+  "orientation": "portrait-primary",
+  "lang": "fr",
+  "categories": ["sports", "football"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-180.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icons/icon-167.png", "sizes": "167x167", "type": "image/png" },
+    { "src": "icons/icon-152.png", "sizes": "152x152", "type": "image/png" },
+    { "src": "icons/icon-120.png", "sizes": "120x120", "type": "image/png" }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Équipe de France",
+      "short_name": "🇫🇷 France",
+      "description": "Voir le parcours de la France",
+      "url": "/index.html?team=France"
+    },
+    {
+      "name": "Tous les groupes",
+      "short_name": "Groupes",
+      "description": "Les 12 groupes de la CDM 2026",
+      "url": "/index.html#groupes"
+    }
+  ]
+}
