@@ -1072,12 +1072,16 @@ function renderKnockout() {
 //  PWA — Service Worker + Install Banner
 // ══════════════════════════════════════════
 
-// Register service worker
+// Register service worker (only on real hosting, not previews)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('SW registered:', reg.scope))
-      .catch(err => console.log('SW error:', err));
+    try {
+      navigator.serviceWorker.register('./sw.js')
+        .then(reg => console.log('SW registered:', reg.scope))
+        .catch(err => console.log('SW unavailable:', err.message));
+    } catch(e) {
+      console.log('SW not supported in this context');
+    }
   });
 }
 
@@ -1203,7 +1207,7 @@ const nationsData = [
     ],
     palmares:['🥉 1966 — 3e place','🏅 2006 — 4e place'],
     debut:false },
-  { name:'Angleterre', flag:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}', group:'L', conf:'UEFA', titres:1, participations:16, coach:'Lee Carsley', coachNat:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}', coachDepuis:'2024',
+  { name:'Angleterre', flag:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', group:'L', conf:'UEFA', titres:1, participations:16, coach:'Lee Carsley', coachNat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', coachDepuis:'2024',
     joueurs:[
       {num:1,name:'Jordan Pickford',pos:'GK',club:'Everton'},
       {num:6,name:'Harry Maguire',pos:'DEF',club:'Manchester United'},
@@ -1511,7 +1515,7 @@ const nationsData = [
     ],
     palmares:['🏅 2014 — 1er tour'],
     debut:false },
-  { name:'Écosse', flag:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}', group:'C', conf:'UEFA', titres:0, participations:8, coach:'Steve Clarke', coachNat:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}', coachDepuis:'2019',
+  { name:'Écosse', flag:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', group:'C', conf:'UEFA', titres:0, participations:8, coach:'Steve Clarke', coachNat:'🏴󠁧󠁢󠁳󠁣󠁴󠁿', coachDepuis:'2019',
     joueurs:[
       {num:3,name:'Andrew Robertson',pos:'DEF',club:'Liverpool'},
       {num:8,name:'John McGinn',pos:'MIL',club:'Aston Villa'},
@@ -1551,7 +1555,7 @@ const nationsData = [
       {num:11,name:'Islam Slimani',pos:'ATT',club:'Brest'},
       {num:14,name:'Andy Delort',pos:'ATT',club:'OGC Nice'},
     ],
-    palmares:['🏅 1982 — Victoire historique face à l'Allemagne'],
+    palmares:['🏅 1982 — Victoire historique face à l\'Allemagne'],
     debut:false },
   { name:'Égypte', flag:'🇪🇬', group:'G', conf:'CAF', titres:0, participations:4, coach:'Hossam Hassan', coachNat:'🇪🇬', coachDepuis:'2024',
     joueurs:[
@@ -1693,7 +1697,7 @@ const nationsData = [
     ],
     palmares:['🏅 4 participations sans passer le 1er tour'],
     debut:false },
-  { name:'Nouvelle-Zélande', flag:'🇳🇿', group:'G', conf:'OFC', titres:0, participations:3, coach:'Darren Bazeley', coachNat:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}', coachDepuis:'2024',
+  { name:'Nouvelle-Zélande', flag:'🇳🇿', group:'G', conf:'OFC', titres:0, participations:3, coach:'Darren Bazeley', coachNat:'🏴󠁧󠁢󠁥󠁮󠁧󠁿', coachDepuis:'2024',
     joueurs:[
       {num:9,name:'Chris Wood',pos:'ATT',club:'Nottingham Forest'},
       {num:1,name:'Oliver Sail',pos:'GK',club:'Nottingham Forest'},
