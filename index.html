@@ -13,14 +13,14 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="CDM 2026">
-<link rel="apple-touch-icon" href="/icon-180.png">
-<link rel="apple-touch-icon" sizes="167x167" href="/icon-167.png">
-<link rel="apple-touch-icon" sizes="152x152" href="/icon-152.png">
-<link rel="apple-touch-icon" sizes="120x120" href="/icon-120.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="apple-touch-icon" sizes="167x167" href="icons/icon-167.png">
+<link rel="apple-touch-icon" sizes="152x152" href="icons/icon-152.png">
+<link rel="apple-touch-icon" sizes="120x120" href="icons/icon-120.png">
 
 <!-- Splash screen color -->
 <meta name="msapplication-TileColor" content="#0A0A0F">
-<meta name="msapplication-TileImage" content="/icon-192.png">
+<meta name="msapplication-TileImage" content="icons/icon-192.png">
 
 <!-- SEO -->
 <meta name="description" content="Calendrier officiel CDM 2026 — 104 matchs, 48 équipes, suivi par nation. États-Unis, Canada, Mexique.">
@@ -300,7 +300,88 @@
     .focus-flag { font-size:44px; }
     .focus-info h2 { font-size:36px; }
     .teams-grid { grid-template-columns:repeat(auto-fill,minmax(100px,1fr)); }
+    .nations-grid { grid-template-columns:repeat(auto-fill,minmax(130px,1fr)); }
+    .fiche-flag { font-size:52px; }
+    .fiche-info h2 { font-size:34px; }
   }
+
+  /* ── NATIONS GRID ── */
+  .nations-toolbar { margin-bottom:20px; display:flex; flex-direction:column; gap:12px; }
+  .nations-search-wrap { position:relative; }
+  .nations-search {
+    width:100%; background:rgba(255,255,255,0.04); border:1px solid var(--border);
+    color:var(--text); font-family:'Barlow Condensed',sans-serif; font-size:16px;
+    padding:11px 44px 11px 16px; outline:none; letter-spacing:1px; transition:border-color .2s;
+  }
+  .nations-search::placeholder { color:var(--muted); }
+  .nations-search:focus { border-color:var(--gold); }
+  .nations-filters { display:flex; gap:6px; flex-wrap:wrap; }
+  .filter-btn {
+    background:rgba(255,255,255,0.04); border:1px solid var(--border2); color:var(--muted);
+    font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:600;
+    letter-spacing:1px; text-transform:uppercase; padding:6px 12px; cursor:pointer; transition:all .15s;
+  }
+  .filter-btn:hover { color:var(--text); border-color:rgba(201,168,76,0.3); }
+  .filter-btn.active { background:rgba(201,168,76,0.12); border-color:var(--gold); color:var(--gold); }
+  .nations-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:10px; }
+  .nation-card {
+    background:var(--dark2); border:1px solid var(--border2); padding:16px 14px 14px;
+    cursor:pointer; transition:all .15s; display:flex; flex-direction:column; align-items:center; gap:6px; text-align:center;
+  }
+  .nation-card:hover { background:var(--dark3); border-color:rgba(201,168,76,0.3); transform:translateY(-2px); }
+  .nation-card.hidden { display:none; }
+  .nc-flag { font-size:36px; line-height:1; }
+  .nc-name { font-family:'Barlow Condensed',sans-serif; font-size:15px; font-weight:700; color:var(--text); line-height:1.2; }
+  .nc-group { font-family:'Barlow Condensed',sans-serif; font-size:11px; letter-spacing:1px; color:var(--gold); text-transform:uppercase; }
+  .nc-conf { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:1px; color:var(--muted); text-transform:uppercase; background:rgba(255,255,255,0.04); padding:2px 6px; }
+  .nc-debut { font-family:'Barlow Condensed',sans-serif; font-size:10px; color:var(--red); text-transform:uppercase; letter-spacing:1px; }
+
+  /* ── FICHE NATION ── */
+  .fiche-back {
+    background:none; border:1px solid var(--border); cursor:pointer;
+    font-family:'Barlow Condensed',sans-serif; font-size:12px; letter-spacing:2px;
+    color:var(--muted); padding:8px 16px; text-transform:uppercase; transition:all .2s; margin-bottom:20px; display:inline-block;
+  }
+  .fiche-back:hover { border-color:var(--gold); color:var(--gold); }
+  .fiche-header {
+    background:linear-gradient(135deg,rgba(201,168,76,0.07),transparent);
+    border:1px solid rgba(201,168,76,0.2); padding:24px; margin-bottom:20px;
+    display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;
+  }
+  .fiche-flag { font-size:72px; line-height:1; flex-shrink:0; }
+  .fiche-info { flex:1; min-width:180px; }
+  .fiche-info h2 { font-family:'Bebas Neue',sans-serif; font-size:42px; color:#fff; letter-spacing:2px; line-height:1; }
+  .fiche-meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px; }
+  .fiche-tag {
+    font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:1px; text-transform:uppercase; padding:3px 9px;
+  }
+  .fiche-tag.gold { background:rgba(201,168,76,0.12); border:1px solid rgba(201,168,76,0.4); color:var(--gold); }
+  .fiche-tag.muted { background:rgba(255,255,255,0.05); border:1px solid var(--border2); color:var(--muted); }
+  .fiche-tag.red { background:rgba(204,41,54,0.12); border:1px solid rgba(204,41,54,0.4); color:#e05060; }
+  .fiche-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border2); margin-top:16px; }
+  .fiche-stat { background:var(--dark); padding:12px 8px; text-align:center; }
+  .fiche-stat .fs-num { font-family:'Bebas Neue',sans-serif; font-size:28px; color:var(--gold); line-height:1; }
+  .fiche-stat .fs-lbl { font-family:'Barlow Condensed',sans-serif; font-size:10px; letter-spacing:1px; color:var(--muted); text-transform:uppercase; }
+  .fiche-section-title { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--gold); letter-spacing:2px; margin:20px 0 10px; padding-bottom:6px; border-bottom:1px solid var(--border2); }
+  .coach-card { background:var(--dark2); border:1px solid var(--border2); padding:14px 18px; display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+  .coach-icon { font-size:28px; }
+  .coach-name { font-family:'Bebas Neue',sans-serif; font-size:22px; color:#fff; letter-spacing:1px; }
+  .coach-detail { font-family:'Barlow Condensed',sans-serif; font-size:13px; color:var(--muted); }
+  .players-grid { display:flex; flex-direction:column; gap:6px; margin-bottom:16px; }
+  .player-row { display:grid; grid-template-columns:36px 1fr auto; align-items:center; gap:12px; padding:10px 14px; background:var(--dark2); border:1px solid var(--border2); }
+  .player-num { font-family:'Bebas Neue',sans-serif; font-size:20px; color:var(--gold); text-align:center; }
+  .player-info .pname { font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:700; color:var(--text); }
+  .player-info .pclub { font-family:'Barlow Condensed',sans-serif; font-size:12px; color:var(--muted); }
+  .player-pos { font-family:'Barlow Condensed',sans-serif; font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:3px 7px; }
+  .pos-GK { background:rgba(255,200,0,0.1); color:#ffc800; border:1px solid rgba(255,200,0,0.3); }
+  .pos-DEF { background:rgba(0,120,255,0.1); color:#4488ff; border:1px solid rgba(0,120,255,0.3); }
+  .pos-MIL { background:rgba(0,200,100,0.1); color:#00cc66; border:1px solid rgba(0,200,100,0.3); }
+  .pos-ATT { background:rgba(204,41,54,0.1); color:#e05060; border:1px solid rgba(204,41,54,0.3); }
+  .palmares-list { display:flex; flex-direction:column; gap:4px; margin-bottom:16px; }
+  .palmares-item { display:flex; align-items:center; gap:10px; padding:8px 14px; background:var(--dark2); border:1px solid var(--border2); font-family:'Barlow Condensed',sans-serif; font-size:14px; color:var(--muted); }
+  .palmares-item .p-year { color:var(--gold); font-weight:700; min-width:44px; }
+  .palmares-item .p-trophy { font-size:18px; }
 </style>
 </head>
 <body>
@@ -358,6 +439,7 @@
     <button class="tab-btn" onclick="showTab('quarts',this)">🏆 Quarts</button>
     <button class="tab-btn" onclick="showTab('demis',this)">🔥 Demis</button>
     <button class="tab-btn" onclick="showTab('finale',this)">👑 Finale</button>
+    <button class="tab-btn" onclick="showTab('nations',this)">🌍 Nations</button>
     <button class="tab-btn" onclick="showTab('format',this)">ℹ️ Format</button>
   </div>
 </div>
@@ -405,7 +487,38 @@
     <div class="matches-list" id="final-container"></div>
   </div>
 
-  <!-- ══ FORMAT ══ -->
+  <!-- ══ NATIONS ══ -->
+  <div id="nations" class="section">
+    <div class="phase-header">
+      <span class="phase-label">Les 48 Nations</span>
+      <div class="phase-line"></div>
+      <span class="phase-count" id="nations-count">48 équipes</span>
+    </div>
+    <!-- Search + Filter -->
+    <div class="nations-toolbar">
+      <div class="nations-search-wrap">
+        <input class="nations-search" id="nationsSearch" type="text" placeholder="Rechercher une nation…" oninput="filterNations()" autocomplete="off">
+        <span class="search-icon">🔍</span>
+      </div>
+      <div class="nations-filters">
+        <button class="filter-btn active" onclick="filterConf('ALL',this)">Toutes</button>
+        <button class="filter-btn" onclick="filterConf('UEFA',this)">UEFA</button>
+        <button class="filter-btn" onclick="filterConf('CONMEBOL',this)">CONMEBOL</button>
+        <button class="filter-btn" onclick="filterConf('CAF',this)">CAF</button>
+        <button class="filter-btn" onclick="filterConf('AFC',this)">AFC</button>
+        <button class="filter-btn" onclick="filterConf('CONCACAF',this)">CONCACAF</button>
+        <button class="filter-btn" onclick="filterConf('OFC',this)">OFC</button>
+      </div>
+    </div>
+    <div class="nations-grid" id="nations-grid"></div>
+  </div>
+
+  <!-- ══ NATION FICHE ══ -->
+  <div id="nation-fiche" style="display:none;">
+    <div id="fiche-content"></div>
+  </div>
+
+
   <div id="format" class="section">
     <div class="phase-header"><span class="phase-label">Format & Informations</span><div class="phase-line"></div></div>
     <div class="info-grid">
@@ -1001,10 +1114,789 @@ if (teamParam) {
   });
 }
 
+
+// ══════════════════════════════════════════
+//  NATIONS DATA — 48 équipes
+// ══════════════════════════════════════════
+const nationsData = [
+  { name:'France', flag:'🇫🇷', group:'I', conf:'UEFA', titres:1, participations:16, coach:'Didier Deschamps', coachNat:'🇫🇷', coachDepuis:'2012',
+    joueurs:[
+      {num:1,name:'Mike Maignan',pos:'GK',club:'AC Milan'},
+      {num:5,name:'Jules Koundé',pos:'DEF',club:'FC Barcelone'},
+      {num:4,name:'Dayot Upamecano',pos:'DEF',club:'Bayern Munich'},
+      {num:22,name:'Théo Hernandez',pos:'DEF',club:'AC Milan'},
+      {num:8,name:'Aurélien Tchouaméni',pos:'MIL',club:'Real Madrid'},
+      {num:7,name:'Antoine Griezmann',pos:'MIL',club:'Atlético Madrid'},
+      {num:14,name:'Adrien Rabiot',pos:'MIL',club:'Marseille'},
+      {num:10,name:'Kylian Mbappé',pos:'ATT',club:'Real Madrid'},
+      {num:9,name:'Olivier Giroud',pos:'ATT',club:'LA Galaxy'},
+    ],
+    palmares:['🏆 1998 — Champion du Monde','🥈 2006 — Finaliste','🥈 2022 — Finaliste'],
+    debut:false },
+  { name:'Argentine', flag:'🇦🇷', group:'J', conf:'CONMEBOL', titres:3, participations:18, coach:'Lionel Scaloni', coachNat:'🇦🇷', coachDepuis:'2018',
+    joueurs:[
+      {num:23,name:'Emiliano Martínez',pos:'GK',club:'Aston Villa'},
+      {num:13,name:'Cristian Romero',pos:'DEF',club:'Tottenham'},
+      {num:25,name:'Lisandro Martínez',pos:'DEF',club:'Manchester United'},
+      {num:20,name:'Alexis Mac Allister',pos:'MIL',club:'Liverpool'},
+      {num:7,name:'Rodrigo De Paul',pos:'MIL',club:'Atlético Madrid'},
+      {num:10,name:'Lionel Messi',pos:'ATT',club:'Inter Miami'},
+      {num:22,name:'Lautaro Martínez',pos:'ATT',club:'Inter Milan'},
+      {num:11,name:'Julián Álvarez',pos:'ATT',club:'Atlético Madrid'},
+      {num:9,name:'Paulo Dybala',pos:'ATT',club:'Roma'},
+    ],
+    palmares:['🏆 1978','🏆 1986','🏆 2022 — Champion du Monde'],
+    debut:false },
+  { name:'Brésil', flag:'🇧🇷', group:'C', conf:'CONMEBOL', titres:5, participations:22, coach:'Carlo Ancelotti', coachNat:'🇮🇹', coachDepuis:'2024',
+    joueurs:[
+      {num:1,name:'Alisson Becker',pos:'GK',club:'Liverpool'},
+      {num:6,name:'Marquinhos',pos:'DEF',club:'PSG'},
+      {num:3,name:'Gabriel Magalhães',pos:'DEF',club:'Arsenal'},
+      {num:5,name:'Casemiro',pos:'MIL',club:'Manchester United'},
+      {num:8,name:'Bruno Guimarães',pos:'MIL',club:'Newcastle'},
+      {num:11,name:'Raphinha',pos:'ATT',club:'FC Barcelone'},
+      {num:10,name:'Rodrygo',pos:'ATT',club:'Real Madrid'},
+      {num:7,name:'Vinicius Jr.',pos:'ATT',club:'Real Madrid'},
+      {num:9,name:'Gabriel Barbosa',pos:'ATT',club:'Flamengo'},
+    ],
+    palmares:['🏆 1958','🏆 1962','🏆 1970','🏆 1994','🏆 2002'],
+    debut:false },
+  { name:'Allemagne', flag:'🇩🇪', group:'E', conf:'UEFA', titres:4, participations:20, coach:'Julian Nagelsmann', coachNat:'🇩🇪', coachDepuis:'2023',
+    joueurs:[
+      {num:1,name:'Manuel Neuer',pos:'GK',club:'Bayern Munich'},
+      {num:4,name:'Jonathan Tah',pos:'DEF',club:'Bayer Leverkusen'},
+      {num:2,name:'Joshua Kimmich',pos:'MIL',club:'Bayern Munich'},
+      {num:10,name:'Jamal Musiala',pos:'MIL',club:'Bayern Munich'},
+      {num:6,name:'Toni Kroos',pos:'MIL',club:'Real Madrid'},
+      {num:7,name:'Kai Havertz',pos:'ATT',club:'Arsenal'},
+      {num:9,name:'Niclas Füllkrug',pos:'ATT',club:'West Ham'},
+      {num:13,name:'Thomas Müller',pos:'ATT',club:'Bayern Munich'},
+      {num:25,name:'Florian Wirtz',pos:'MIL',club:'Bayer Leverkusen'},
+    ],
+    palmares:['🏆 1954','🏆 1974','🏆 1990','🏆 2014'],
+    debut:false },
+  { name:'Espagne', flag:'🇪🇸', group:'H', conf:'UEFA', titres:1, participations:16, coach:'Luis de la Fuente', coachNat:'🇪🇸', coachDepuis:'2023',
+    joueurs:[
+      {num:1,name:'Unai Simón',pos:'GK',club:'Athletic Bilbao'},
+      {num:24,name:'Dani Carvajal',pos:'DEF',club:'Real Madrid'},
+      {num:8,name:'Pedri',pos:'MIL',club:'FC Barcelone'},
+      {num:16,name:'Rodri',pos:'MIL',club:'Manchester City'},
+      {num:10,name:'Lamine Yamal',pos:'ATT',club:'FC Barcelone'},
+      {num:19,name:'Dani Olmo',pos:'ATT',club:'FC Barcelone'},
+      {num:9,name:'Álvaro Morata',pos:'ATT',club:'AC Milan'},
+      {num:6,name:'Fabián Ruiz',pos:'MIL',club:'PSG'},
+      {num:11,name:'Nico Williams',pos:'ATT',club:'Athletic Bilbao'},
+    ],
+    palmares:['🏆 2010 — Champion du Monde'],
+    debut:false },
+  { name:'Portugal', flag:'🇵🇹', group:'K', conf:'UEFA', titres:0, participations:9, coach:'Roberto Martínez', coachNat:'🇪🇸', coachDepuis:'2023',
+    joueurs:[
+      {num:1,name:'Rui Patrício',pos:'GK',club:'AS Roma'},
+      {num:4,name:'Rúben Dias',pos:'DEF',club:'Manchester City'},
+      {num:2,name:'João Cancelo',pos:'DEF',club:'Manchester City'},
+      {num:8,name:'Bruno Fernandes',pos:'MIL',club:'Manchester United'},
+      {num:10,name:'Bernardo Silva',pos:'MIL',club:'Manchester City'},
+      {num:7,name:'Cristiano Ronaldo',pos:'ATT',club:'Al Nassr'},
+      {num:11,name:'Rafael Leão',pos:'ATT',club:'AC Milan'},
+      {num:21,name:'João Félix',pos:'ATT',club:'Chelsea'},
+      {num:16,name:'Vitinha',pos:'MIL',club:'PSG'},
+    ],
+    palmares:['🥉 1966 — 3e place','🏅 2006 — 4e place'],
+    debut:false },
+  { name:'Angleterre', flag:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}', group:'L', conf:'UEFA', titres:1, participations:16, coach:'Lee Carsley', coachNat:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}', coachDepuis:'2024',
+    joueurs:[
+      {num:1,name:'Jordan Pickford',pos:'GK',club:'Everton'},
+      {num:6,name:'Harry Maguire',pos:'DEF',club:'Manchester United'},
+      {num:4,name:'Declan Rice',pos:'MIL',club:'Arsenal'},
+      {num:8,name:'Jude Bellingham',pos:'MIL',club:'Real Madrid'},
+      {num:10,name:'Phil Foden',pos:'MIL',club:'Manchester City'},
+      {num:9,name:'Harry Kane',pos:'ATT',club:'Bayern Munich'},
+      {num:7,name:'Bukayo Saka',pos:'ATT',club:'Arsenal'},
+      {num:2,name:'Trent Alexander-Arnold',pos:'DEF',club:'Real Madrid'},
+      {num:11,name:'Marcus Rashford',pos:'ATT',club:'Aston Villa'},
+    ],
+    palmares:['🏆 1966 — Champion du Monde'],
+    debut:false },
+  { name:'Pays-Bas', flag:'🇳🇱', group:'F', conf:'UEFA', titres:0, participations:11, coach:'Ronald Koeman', coachNat:'🇳🇱', coachDepuis:'2023',
+    joueurs:[
+      {num:1,name:'Bart Verbruggen',pos:'GK',club:'Brighton'},
+      {num:4,name:'Virgil van Dijk',pos:'DEF',club:'Liverpool'},
+      {num:2,name:'Denzel Dumfries',pos:'DEF',club:'Inter Milan'},
+      {num:8,name:'Tijjani Reijnders',pos:'MIL',club:'AC Milan'},
+      {num:21,name:'Xavi Simons',pos:'MIL',club:'RB Leipzig'},
+      {num:11,name:'Cody Gakpo',pos:'ATT',club:'Liverpool'},
+      {num:10,name:'Memphis Depay',pos:'ATT',club:'Corinthians'},
+      {num:9,name:'Wout Weghorst',pos:'ATT',club:'Hoffenheim'},
+      {num:6,name:'Stefan de Vrij',pos:'DEF',club:'Inter Milan'},
+    ],
+    palmares:['🥈 1974','🥈 1978','🥈 2010 — 3 finales perdues'],
+    debut:false },
+  { name:'Belgique', flag:'🇧🇪', group:'G', conf:'UEFA', titres:0, participations:14, coach:'Domenico Tedesco', coachNat:'🇩🇪', coachDepuis:'2023',
+    joueurs:[
+      {num:1,name:'Koen Casteels',pos:'GK',club:'Al-Qadsiah'},
+      {num:5,name:'Jan Vertonghen',pos:'DEF',club:'Anderlecht'},
+      {num:7,name:'Kevin De Bruyne',pos:'MIL',club:'Manchester City'},
+      {num:8,name:'Youri Tielemans',pos:'MIL',club:'Aston Villa'},
+      {num:9,name:'Romelu Lukaku',pos:'ATT',club:'Napoli'},
+      {num:16,name:'Lois Openda',pos:'ATT',club:'RB Leipzig'},
+      {num:2,name:'Timothy Castagne',pos:'DEF',club:'Fulham'},
+      {num:11,name:'Jeremy Doku',pos:'ATT',club:'Manchester City'},
+      {num:4,name:'Wout Faes',pos:'DEF',club:'Leicester'},
+    ],
+    palmares:['🥉 1986 — 3e place','🏅 2018 — 3e place'],
+    debut:false },
+  { name:'Mexique', flag:'🇲🇽', group:'A', conf:'CONCACAF', titres:0, participations:17, coach:'Javier Aguirre', coachNat:'🇲🇽', coachDepuis:'2024',
+    joueurs:[
+      {num:1,name:'Guillermo Ochoa',pos:'GK',club:'Club América'},
+      {num:14,name:'Edson Álvarez',pos:'MIL',club:'West Ham'},
+      {num:7,name:'Hirving Lozano',pos:'ATT',club:'PSV'},
+      {num:9,name:'Raúl Jiménez',pos:'ATT',club:'Fulham'},
+      {num:10,name:'Alexis Vega',pos:'MIL',club:'Chivas'},
+      {num:22,name:'Henry Martín',pos:'ATT',club:'Club América'},
+      {num:3,name:'Néstor Araujo',pos:'DEF',club:'Club América'},
+      {num:8,name:'Orbelin Pineda',pos:'MIL',club:'Cruz Azul'},
+      {num:2,name:'Jorge Sánchez',pos:'DEF',club:'Porto'},
+    ],
+    palmares:['🏅 1970, 1986 — Quarts de finale'],
+    debut:false },
+  { name:'États-Unis', flag:'🇺🇸', group:'D', conf:'CONCACAF', titres:0, participations:12, coach:'Mauricio Pochettino', coachNat:'🇦🇷', coachDepuis:'2024',
+    joueurs:[
+      {num:1,name:'Matt Turner',pos:'GK',club:'Crystal Palace'},
+      {num:10,name:'Christian Pulisic',pos:'ATT',club:'AC Milan'},
+      {num:8,name:'Tyler Adams',pos:'MIL',club:'Bournemouth'},
+      {num:6,name:'Weston McKennie',pos:'MIL',club:'Juventus'},
+      {num:5,name:'Antonee Robinson',pos:'DEF',club:'Fulham'},
+      {num:7,name:'Giovanni Reyna',pos:'MIL',club:'Borussia Dortmund'},
+      {num:11,name:'Folarin Balogun',pos:'ATT',club:'Monaco'},
+      {num:9,name:'Josh Sargent',pos:'ATT',club:'Norwich City'},
+      {num:4,name:'Tim Ream',pos:'DEF',club:'Charlotte FC'},
+    ],
+    palmares:['🥉 1930 — 3e place'],
+    debut:false },
+  { name:'Maroc', flag:'🇲🇦', group:'C', conf:'CAF', titres:0, participations:6, coach:'Walid Regragui', coachNat:'🇲🇦', coachDepuis:'2022',
+    joueurs:[
+      {num:1,name:'Yassine Bounou',pos:'GK',club:'Al-Hilal'},
+      {num:12,name:'Achraf Hakimi',pos:'DEF',club:'PSG'},
+      {num:6,name:'Romain Saïss',pos:'DEF',club:'Besiktas'},
+      {num:4,name:'Sofyan Amrabat',pos:'MIL',club:'Manchester United'},
+      {num:7,name:'Hakim Ziyech',pos:'MIL',club:'Galatasaray'},
+      {num:14,name:'Youssef En-Nesyri',pos:'ATT',club:'Fenerbahçe'},
+      {num:10,name:'Brahim Díaz',pos:'ATT',club:'Real Madrid'},
+      {num:8,name:'Azzedine Ounahi',pos:'MIL',club:'OM'},
+      {num:9,name:'Ayoub El Kaabi',pos:'ATT',club:'Olympiakos'},
+    ],
+    palmares:['🏅 2022 — 4e place (record africain)'],
+    debut:false },
+  { name:'Sénégal', flag:'🇸🇳', group:'I', conf:'CAF', titres:0, participations:4, coach:'Aliou Cissé', coachNat:'🇸🇳', coachDepuis:'2015',
+    joueurs:[
+      {num:1,name:'Edouard Mendy',pos:'GK',club:'Al-Ahli'},
+      {num:12,name:'Kalidou Koulibaly',pos:'DEF',club:'Al-Hilal'},
+      {num:10,name:'Sadio Mané',pos:'ATT',club:'Al-Nassr'},
+      {num:11,name:'Ismaïla Sarr',pos:'ATT',club:'Marseille'},
+      {num:9,name:'Nicolas Jackson',pos:'ATT',club:'Chelsea'},
+      {num:8,name:'Idrissa Gueye',pos:'MIL',club:'Everton'},
+      {num:7,name:'Lamine Camara',pos:'MIL',club:'Monaco'},
+      {num:3,name:'Abdou Diallo',pos:'DEF',club:'Leipzig'},
+      {num:6,name:'Cheikhou Kouyaté',pos:'MIL',club:'Nottingham Forest'},
+    ],
+    palmares:['🏅 2002 — Quarts de finale'],
+    debut:false },
+  { name:'Japon', flag:'🇯🇵', group:'F', conf:'AFC', titres:0, participations:8, coach:'Hajime Moriyasu', coachNat:'🇯🇵', coachDepuis:'2018',
+    joueurs:[
+      {num:1,name:'Shuichi Gonda',pos:'GK',club:'Shimizu S-Pulse'},
+      {num:16,name:'Tomiyasu Takehiro',pos:'DEF',club:'Arsenal'},
+      {num:8,name:'Wataru Endo',pos:'MIL',club:'Liverpool'},
+      {num:10,name:'Takumi Minamino',pos:'MIL',club:'Monaco'},
+      {num:11,name:'Kaoru Mitoma',pos:'ATT',club:'Brighton'},
+      {num:9,name:'Ayase Ueda',pos:'ATT',club:'Feyenoord'},
+      {num:21,name:'Ritsu Doan',pos:'ATT',club:'Freiburg'},
+      {num:14,name:'Daichi Kamada',pos:'MIL',club:'Crystal Palace'},
+      {num:22,name:'Hiroki Sakai',pos:'DEF',club:'Urawa Reds'},
+    ],
+    palmares:['🏅 2002 — Quarts (co-organisateur)'],
+    debut:false },
+  { name:'Corée du Sud', flag:'🇰🇷', group:'A', conf:'AFC', titres:0, participations:11, coach:'Hong Myung-bo', coachNat:'🇰🇷', coachDepuis:'2024',
+    joueurs:[
+      {num:1,name:'Kim Seung-gyu',pos:'GK',club:'Vissel Kobe'},
+      {num:12,name:'Kim Min-jae',pos:'DEF',club:'Bayern Munich'},
+      {num:7,name:'Son Heung-min',pos:'ATT',club:'Tottenham'},
+      {num:9,name:'Hwang Hee-chan',pos:'ATT',club:'Wolverhampton'},
+      {num:8,name:'Hwang In-beom',pos:'MIL',club:'Feyenoord'},
+      {num:11,name:'Cho Gue-sung',pos:'ATT',club:'Freiburg'},
+      {num:10,name:'Lee Jae-sung',pos:'MIL',club:'Mainz'},
+      {num:2,name:'Lee Yong',pos:'DEF',club:'Jeonbuk'},
+      {num:16,name:'Jung Woo-young',pos:'MIL',club:'Al-Qadsiah'},
+    ],
+    palmares:['🏅 2002 — 4e place (co-organisateur)'],
+    debut:false },
+  { name:'Canada', flag:'🇨🇦', group:'B', conf:'CONCACAF', titres:0, participations:2, coach:'Jesse Marsch', coachNat:'🇺🇸', coachDepuis:'2023',
+    joueurs:[
+      {num:14,name:'Alphonso Davies',pos:'DEF',club:'Bayern Munich'},
+      {num:9,name:'Jonathan David',pos:'ATT',club:'LOSC Lille'},
+      {num:8,name:'Stephen Eustáquio',pos:'MIL',club:'Porto'},
+      {num:10,name:'Tajon Buchanan',pos:'MIL',club:'Inter Milan'},
+      {num:7,name:'Cyle Larin',pos:'ATT',club:'Club Bruges'},
+      {num:1,name:'Maxime Crépeau',pos:'GK',club:'LA Galaxy'},
+      {num:3,name:'Richie Laryea',pos:'DEF',club:'Nottingham Forest'},
+      {num:11,name:'Lucas Cavallini',pos:'ATT',club:'Vancouver'},
+      {num:6,name:'Steven Vitória',pos:'DEF',club:'Arouca'},
+    ],
+    palmares:['🏅 1986 — 1er tour'],
+    debut:false },
+  { name:'Australie', flag:'🇦🇺', group:'D', conf:'AFC', titres:0, participations:6, coach:'Tony Popovic', coachNat:'🇦🇺', coachDepuis:'2024',
+    joueurs:[
+      {num:1,name:'Mat Ryan',pos:'GK',club:'Real Sociedad'},
+      {num:5,name:'Harry Souttar',pos:'DEF',club:'Leicester'},
+      {num:9,name:'Adam Taggart',pos:'ATT',club:'Cerezo Osaka'},
+      {num:10,name:'Mathew Leckie',pos:'ATT',club:'Melbourne City'},
+      {num:8,name:'Riley McGree',pos:'MIL',club:'Middlesbrough'},
+      {num:7,name:'Awer Mabil',pos:'ATT',club:'Famalicão'},
+      {num:6,name:'Massimo Luongo',pos:'MIL',club:'Middlesbrough'},
+      {num:2,name:'Nathaniel Atkinson',pos:'DEF',club:'St Mirren'},
+      {num:11,name:'Martin Boyle',pos:'ATT',club:'Al-Faisaly'},
+    ],
+    palmares:['🏅 2006 — 16es de finale'],
+    debut:false },
+  { name:'Uruguay', flag:'🇺🇾', group:'H', conf:'CONMEBOL', titres:2, participations:14, coach:'Marcelo Bielsa', coachNat:'🇦🇷', coachDepuis:'2023',
+    joueurs:[
+      {num:1,name:'Sergio Rochet',pos:'GK',club:'Nacional'},
+      {num:4,name:'Ronald Araújo',pos:'DEF',club:'FC Barcelone'},
+      {num:8,name:'Federico Valverde',pos:'MIL',club:'Real Madrid'},
+      {num:21,name:'Rodrigo Bentancur',pos:'MIL',club:'Tottenham'},
+      {num:9,name:'Darwin Núñez',pos:'ATT',club:'Liverpool'},
+      {num:3,name:'José María Giménez',pos:'DEF',club:'Atlético Madrid'},
+      {num:15,name:'Matías Olivera',pos:'DEF',club:'Napoli'},
+      {num:14,name:'Lucas Torreira',pos:'MIL',club:'Galatasaray'},
+      {num:17,name:'Facundo Pellistri',pos:'ATT',club:'Manchester United'},
+    ],
+    palmares:['🏆 1930','🏆 1950 — 2 titres mondiaux'],
+    debut:false },
+  { name:'Colombie', flag:'🇨🇴', group:'K', conf:'CONMEBOL', titres:0, participations:6, coach:'Néstor Lorenzo', coachNat:'🇦🇷', coachDepuis:'2022',
+    joueurs:[
+      {num:11,name:'Luis Díaz',pos:'ATT',club:'Liverpool'},
+      {num:10,name:'James Rodríguez',pos:'MIL',club:'Rayo Vallecano'},
+      {num:1,name:'David Ospina',pos:'GK',club:'Al-Qadsiah'},
+      {num:3,name:'Yerry Mina',pos:'DEF',club:'Fiorentina'},
+      {num:8,name:'Wilmar Barrios',pos:'MIL',club:'Zenit'},
+      {num:6,name:'Richard Ríos',pos:'MIL',club:'Palmeiras'},
+      {num:7,name:'Jhon Durán',pos:'ATT',club:'Aston Villa'},
+      {num:12,name:'Daniel Muñoz',pos:'DEF',club:'Crystal Palace'},
+      {num:9,name:'Radamel Falcao',pos:'ATT',club:'Millonarios'},
+    ],
+    palmares:['🏅 2014 — Quarts de finale'],
+    debut:false },
+  { name:'Équateur', flag:'🇪🇨', group:'E', conf:'CONMEBOL', titres:0, participations:4, coach:'Sebastián Beccacece', coachNat:'🇦🇷', coachDepuis:'2024',
+    joueurs:[
+      {num:8,name:'Moisés Caicedo',pos:'MIL',club:'Chelsea'},
+      {num:3,name:'Piero Hincapié',pos:'DEF',club:'Bayer Leverkusen'},
+      {num:7,name:'Pervis Estupiñán',pos:'DEF',club:'Brighton'},
+      {num:9,name:'Enner Valencia',pos:'ATT',club:'Internacional'},
+      {num:10,name:'Gonzalo Plata',pos:'ATT',club:'Al-Qadsiah'},
+      {num:1,name:'Hernán Galíndez',pos:'GK',club:'Aucas'},
+      {num:4,name:'Byron Castillo',pos:'DEF',club:'Basel'},
+      {num:11,name:'Jeremy Sarmiento',pos:'ATT',club:'Brighton'},
+      {num:6,name:'Carlos Gruezo',pos:'MIL',club:'FC Augsburg'},
+    ],
+    palmares:['🏅 2006 — 16es de finale'],
+    debut:false },
+  { name:'Paraguay', flag:'🇵🇾', group:'D', conf:'CONMEBOL', titres:0, participations:9, coach:'Gustavo Alfaro', coachNat:'🇦🇷', coachDepuis:'2023',
+    joueurs:[
+      {num:10,name:'Miguel Almirón',pos:'MIL',club:'Newcastle'},
+      {num:9,name:'Julio Enciso',pos:'ATT',club:'Brighton'},
+      {num:4,name:'Gustavo Gómez',pos:'DEF',club:'Palmeiras'},
+      {num:7,name:'Antonio Sanabria',pos:'ATT',club:'Torino'},
+      {num:1,name:'Antony Silva',pos:'GK',club:'Olimpia'},
+      {num:8,name:'Mathías Villasanti',pos:'MIL',club:'Grêmio'},
+      {num:5,name:'Richard Sánchez',pos:'MIL',club:'América'},
+      {num:11,name:'Ángel Romero',pos:'ATT',club:'Boca Juniors'},
+      {num:3,name:'Fabián Balbuena',pos:'DEF',club:'Nacional'},
+    ],
+    palmares:['🏅 1986, 2010 — Quarts de finale'],
+    debut:false },
+  { name:'Suisse', flag:'🇨🇭', group:'B', conf:'UEFA', titres:0, participations:12, coach:'Murat Yakin', coachNat:'🇨🇭', coachDepuis:'2021',
+    joueurs:[
+      {num:1,name:'Yann Sommer',pos:'GK',club:'Inter Milan'},
+      {num:5,name:'Manuel Akanji',pos:'DEF',club:'Manchester City'},
+      {num:10,name:'Granit Xhaka',pos:'MIL',club:'Bayer Leverkusen'},
+      {num:8,name:'Remo Freuler',pos:'MIL',club:'Nottingham Forest'},
+      {num:7,name:'Breel Embolo',pos:'ATT',club:'Monaco'},
+      {num:9,name:'Haris Seferovic',pos:'ATT',club:'Benfica'},
+      {num:13,name:'Ricardo Rodríguez',pos:'DEF',club:'Torino'},
+      {num:11,name:'Ruben Vargas',pos:'ATT',club:'Augsburg'},
+      {num:6,name:'Denis Zakaria',pos:'MIL',club:'Monaco'},
+    ],
+    palmares:['🏅 1934,1938,1954 — Quarts de finale'],
+    debut:false },
+  { name:'Croatie', flag:'🇭🇷', group:'L', conf:'UEFA', titres:0, participations:7, coach:'Zlatko Dalić', coachNat:'🇭🇷', coachDepuis:'2017',
+    joueurs:[
+      {num:10,name:'Luka Modrić',pos:'MIL',club:'Real Madrid'},
+      {num:8,name:'Mateo Kovačić',pos:'MIL',club:'Manchester City'},
+      {num:1,name:'Dominik Livaković',pos:'GK',club:'Fenerbahçe'},
+      {num:9,name:'Andrej Kramarić',pos:'ATT',club:'Hoffenheim'},
+      {num:11,name:'Marcelo Brozović',pos:'MIL',club:'Al-Nassr'},
+      {num:7,name:'Ivan Perišić',pos:'ATT',club:'Hajduk Split'},
+      {num:2,name:'Josip Juranović',pos:'DEF',club:'Union Berlin'},
+      {num:6,name:'Domagoj Vida',pos:'DEF',club:'AEK Athènes'},
+      {num:16,name:'Bruno Petković',pos:'ATT',club:'Dinamo Zagreb'},
+    ],
+    palmares:['🥈 2018 — Finaliste','🥉 1998, 2022 — 3e place'],
+    debut:false },
+  { name:'Turquie', flag:'🇹🇷', group:'D', conf:'UEFA', titres:0, participations:3, coach:'Vincenzo Montella', coachNat:'🇮🇹', coachDepuis:'2023',
+    joueurs:[
+      {num:8,name:'Hakan Çalhanoğlu',pos:'MIL',club:'Inter Milan'},
+      {num:10,name:'Arda Güler',pos:'MIL',club:'Real Madrid'},
+      {num:7,name:'Kenan Yildiz',pos:'ATT',club:'Juventus'},
+      {num:1,name:'Altay Bayındır',pos:'GK',club:'Manchester United'},
+      {num:3,name:'Merih Demiral',pos:'DEF',club:'Al-Qadsiah'},
+      {num:6,name:'Orkun Kökçü',pos:'MIL',club:'Benfica'},
+      {num:9,name:'Baris Alper Yilmaz',pos:'ATT',club:'Galatasaray'},
+      {num:11,name:'Yusuf Yazici',pos:'ATT',club:'LOSC Lille'},
+      {num:4,name:'Samet Akaydin',pos:'DEF',club:'Fenerbahçe'},
+    ],
+    palmares:['🥉 2002 — 3e place'],
+    debut:false },
+  { name:'Norvège', flag:'🇳🇴', group:'I', conf:'UEFA', titres:0, participations:4, coach:'Ståle Solbakken', coachNat:'🇳🇴', coachDepuis:'2021',
+    joueurs:[
+      {num:9,name:'Erling Haaland',pos:'ATT',club:'Manchester City'},
+      {num:10,name:'Martin Ødegaard',pos:'MIL',club:'Arsenal'},
+      {num:7,name:'Alexander Sørloth',pos:'ATT',club:'Atlético Madrid'},
+      {num:1,name:'Ørjan Nyland',pos:'GK',club:'Brentford'},
+      {num:5,name:'Leo Østigård',pos:'DEF',club:'Napoli'},
+      {num:2,name:'Kristoffer Ajer',pos:'DEF',club:'Brentford'},
+      {num:8,name:'Sander Berge',pos:'MIL',club:'Burnley'},
+      {num:11,name:'Mohamed Elyounoussi',pos:'ATT',club:'Southampton'},
+      {num:6,name:'Morten Thorsby',pos:'MIL',club:'Genoa'},
+    ],
+    palmares:['🏅 1938, 1994, 1998 — 1er tour'],
+    debut:false },
+  { name:'Suède', flag:'🇸🇪', group:'F', conf:'UEFA', titres:0, participations:12, coach:'Jon Dahl Tomasson', coachNat:'🇩🇰', coachDepuis:'2022',
+    joueurs:[
+      {num:9,name:'Viktor Gyökeres',pos:'ATT',club:'Sporting CP'},
+      {num:11,name:'Alexander Isak',pos:'ATT',club:'Newcastle'},
+      {num:10,name:'Dejan Kulusevski',pos:'MIL',club:'Tottenham'},
+      {num:1,name:'Robin Olsen',pos:'GK',club:'Aston Villa'},
+      {num:6,name:'Victor Lindelöf',pos:'DEF',club:'Manchester United'},
+      {num:7,name:'Emil Forsberg',pos:'MIL',club:'RB Leipzig'},
+      {num:8,name:'Albin Ekdal',pos:'MIL',club:'Sampdoria'},
+      {num:3,name:'Ludwig Augustinsson',pos:'DEF',club:'Werder Brême'},
+      {num:5,name:'Isak Hien',pos:'DEF',club:'Atalanta'},
+    ],
+    palmares:['🥉 1950, 1994 — 3e place','🥈 1958 — Finaliste'],
+    debut:false },
+  { name:'Autriche', flag:'🇦🇹', group:'J', conf:'UEFA', titres:0, participations:7, coach:'Ralf Rangnick', coachNat:'🇩🇪', coachDepuis:'2022',
+    joueurs:[
+      {num:10,name:'Marcel Sabitzer',pos:'MIL',club:'Borussia Dortmund'},
+      {num:11,name:'Marko Arnautović',pos:'ATT',club:'Inter Milan'},
+      {num:7,name:'Christoph Baumgartner',pos:'MIL',club:'RB Leipzig'},
+      {num:1,name:'Patrick Pentz',pos:'GK',club:'Bayer Leverkusen'},
+      {num:4,name:'Kevin Danso',pos:'DEF',club:'Lens'},
+      {num:9,name:'Michael Gregoritsch',pos:'ATT',club:'Freiburg'},
+      {num:8,name:'Florian Grillitsch',pos:'MIL',club:'Ajax'},
+      {num:3,name:'Philipp Mwene',pos:'DEF',club:'Mayence'},
+      {num:14,name:'Patrick Wimmer',pos:'ATT',club:'Wolfsbourg'},
+    ],
+    palmares:['🥉 1954 — 3e place'],
+    debut:false },
+  { name:'Bosnie-Herzégovine', flag:'🇧🇦', group:'B', conf:'UEFA', titres:0, participations:2, coach:'Sergej Barbarez', coachNat:'🇧🇦', coachDepuis:'2024',
+    joueurs:[
+      {num:9,name:'Edin Džeko',pos:'ATT',club:'Fenerbahçe'},
+      {num:8,name:'Miralem Pjanić',pos:'MIL',club:'Sharjah'},
+      {num:3,name:'Sead Kolašinac',pos:'DEF',club:'Atalanta'},
+      {num:6,name:'Ermedin Demirović',pos:'ATT',club:'Stuttgart'},
+      {num:11,name:'Anel Ahmedhodžić',pos:'DEF',club:'Sheffield United'},
+      {num:1,name:'Ibrahim Šehić',pos:'GK',club:'HNK Rijeka'},
+      {num:5,name:'Ermin Bičakčić',pos:'DEF',club:'Eintracht Frankfurt'},
+      {num:7,name:'Edin Visca',pos:'ATT',club:'Trabzonspor'},
+      {num:10,name:'Amer Gojak',pos:'MIL',club:'Caykur Rizespor'},
+    ],
+    palmares:['🏅 2014 — 1er tour'],
+    debut:false },
+  { name:'Écosse', flag:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}', group:'C', conf:'UEFA', titres:0, participations:8, coach:'Steve Clarke', coachNat:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0073}\u{E0063}\u{E0074}\u{E007F}', coachDepuis:'2019',
+    joueurs:[
+      {num:3,name:'Andrew Robertson',pos:'DEF',club:'Liverpool'},
+      {num:8,name:'John McGinn',pos:'MIL',club:'Aston Villa'},
+      {num:10,name:'Billy Gilmour',pos:'MIL',club:'Brighton'},
+      {num:1,name:'Craig Gordon',pos:'GK',club:'Hearts'},
+      {num:9,name:'Lawrence Shankland',pos:'ATT',club:'Hearts'},
+      {num:5,name:'Grant Hanley',pos:'DEF',club:'Norwich'},
+      {num:7,name:'Ryan Christie',pos:'MIL',club:'Bournemouth'},
+      {num:11,name:'Che Adams',pos:'ATT',club:'Torino'},
+      {num:4,name:'Callum McGregor',pos:'MIL',club:'Celtic'},
+    ],
+    palmares:['🏅 8 participations, jamais passé le 1er tour'],
+    debut:false },
+  { name:'Rép. Tchèque', flag:'🇨🇿', group:'A', conf:'UEFA', titres:0, participations:3, coach:'Ivan Hašek', coachNat:'🇨🇿', coachDepuis:'2024',
+    joueurs:[
+      {num:9,name:'Patrik Schick',pos:'ATT',club:'Bayer Leverkusen'},
+      {num:8,name:'Tomáš Souček',pos:'MIL',club:'West Ham'},
+      {num:7,name:'Antonín Barák',pos:'MIL',club:'Fiorentina'},
+      {num:1,name:'Jiří Staněk',pos:'GK',club:'Séville'},
+      {num:5,name:'Jakub Brabec',pos:'DEF',club:'Pilsen'},
+      {num:11,name:'Ondřej Lingr',pos:'ATT',club:'Feyenoord'},
+      {num:3,name:'Tomáš Holeš',pos:'DEF',club:'Slavia Prague'},
+      {num:6,name:'Lukáš Provod',pos:'MIL',club:'Slavia Prague'},
+      {num:10,name:'Vladimír Coufal',pos:'DEF',club:'West Ham'},
+    ],
+    palmares:['🥈 1962 — Finaliste (Tchécoslovaquie)'],
+    debut:false },
+  { name:'Algérie', flag:'🇩🇿', group:'J', conf:'CAF', titres:0, participations:5, coach:'Djamel Belmadi', coachNat:'🇩🇿', coachDepuis:'2018',
+    joueurs:[
+      {num:7,name:'Riyad Mahrez',pos:'ATT',club:'Al-Ahli'},
+      {num:8,name:'Ismaël Bennacer',pos:'MIL',club:'AC Milan'},
+      {num:5,name:'Ramy Bensebaini',pos:'DEF',club:'Borussia Dortmund'},
+      {num:1,name:"Rais M'Bolhi",pos:'GK',club:'Al-Ettifaq'},
+      {num:3,name:'Aïssa Mandi',pos:'DEF',club:'Villarreal'},
+      {num:10,name:'Sofiane Feghouli',pos:'MIL',club:'Galatasaray'},
+      {num:9,name:'Yacine Brahimi',pos:'ATT',club:'Al-Rayyan'},
+      {num:11,name:'Islam Slimani',pos:'ATT',club:'Brest'},
+      {num:14,name:'Andy Delort',pos:'ATT',club:'OGC Nice'},
+    ],
+    palmares:['🏅 1982 — Victoire historique face à l'Allemagne'],
+    debut:false },
+  { name:'Égypte', flag:'🇪🇬', group:'G', conf:'CAF', titres:0, participations:4, coach:'Hossam Hassan', coachNat:'🇪🇬', coachDepuis:'2024',
+    joueurs:[
+      {num:10,name:'Mohamed Salah',pos:'ATT',club:'Liverpool'},
+      {num:7,name:'Omar Marmoush',pos:'ATT',club:'Manchester City'},
+      {num:9,name:'Mostafa Mohamed',pos:'ATT',club:'Galatasaray'},
+      {num:1,name:'Mohamed El-Shenawy',pos:'GK',club:'Al-Ahly'},
+      {num:5,name:'Ahmed Hegazi',pos:'DEF',club:'Al-Ittihad'},
+      {num:8,name:'Tarek Hamed',pos:'MIL',club:'Al-Ahly'},
+      {num:11,name:'Trezeguet',pos:'ATT',club:'Basaksehir'},
+      {num:3,name:'Ahmed El-Fotouh',pos:'DEF',club:'Zamalek'},
+      {num:6,name:'Amr El-Sulaya',pos:'MIL',club:'Al-Ahly'},
+    ],
+    palmares:['🏅 4 participations, jamais sorti du 1er tour'],
+    debut:false },
+  { name:'Ghana', flag:'🇬🇭', group:'K', conf:'CAF', titres:0, participations:4, coach:'Otto Addo', coachNat:'🇬🇭', coachDepuis:'2024',
+    joueurs:[
+      {num:8,name:'Thomas Partey',pos:'MIL',club:'Arsenal'},
+      {num:9,name:'Inaki Williams',pos:'ATT',club:'Athletic Bilbao'},
+      {num:10,name:'Jordan Ayew',pos:'ATT',club:'Leicester'},
+      {num:7,name:'André Ayew',pos:'ATT',club:'Le Havre'},
+      {num:11,name:'Antoine Semenyo',pos:'ATT',club:'Bournemouth'},
+      {num:1,name:'Lawrence Ati-Zigi',pos:'GK',club:'FC Saint-Gall'},
+      {num:5,name:'Daniel Amartey',pos:'DEF',club:'Besiktas'},
+      {num:3,name:'Baba Rahman',pos:'DEF',club:'Chelsea'},
+      {num:6,name:'Nico Williams',pos:'ATT',club:'Athletic Bilbao'},
+    ],
+    palmares:['🏅 2010 — Quarts de finale'],
+    debut:false },
+  { name:'RD Congo', flag:'🇨🇩', group:'L', conf:'CAF', titres:0, participations:2, coach:'Sébastien Desabre', coachNat:'🇫🇷', coachDepuis:'2023',
+    joueurs:[
+      {num:3,name:'Chancel Mbemba',pos:'DEF',club:'Marseille'},
+      {num:5,name:'Arthur Masuaku',pos:'DEF',club:'Besiktas'},
+      {num:10,name:'Cédric Bakambu',pos:'ATT',club:'Villarreal'},
+      {num:1,name:'Joël Kiassumbua',pos:'GK',club:'Eupen'},
+      {num:7,name:'Théo Bongonda',pos:'ATT',club:'Genk'},
+      {num:8,name:'Yannick Bolasie',pos:'ATT',club:'Millwall'},
+      {num:6,name:'Marcel Tisserand',pos:'DEF',club:'Fenerbahçe'},
+      {num:9,name:'Jonathan Bolingi',pos:'ATT',club:'Beerschot'},
+      {num:11,name:'Dieumerci Mbokani',pos:'ATT',club:'TP Mazembe'},
+    ],
+    palmares:['🏅 1974 — 1er tour (sous nom Zaïre)'],
+    debut:false },
+  { name:'Afrique du Sud', flag:'🇿🇦', group:'A', conf:'CAF', titres:0, participations:4, coach:'Hugo Broos', coachNat:'🇧🇪', coachDepuis:'2021',
+    joueurs:[
+      {num:1,name:'Ronwen Williams',pos:'GK',club:'Mamelodi Sundowns'},
+      {num:9,name:'Lyle Foster',pos:'ATT',club:'Burnley'},
+      {num:10,name:'Percy Tau',pos:'ATT',club:'Al-Ahly'},
+      {num:8,name:'Teboho Mokoena',pos:'MIL',club:'Mamelodi Sundowns'},
+      {num:7,name:'Evidence Makgopa',pos:'ATT',club:'Orlando Pirates'},
+      {num:5,name:'Thibang Phete',pos:'DEF',club:'Beerschot'},
+      {num:3,name:'Terrence Mashego',pos:'DEF',club:'Cape Town City'},
+      {num:11,name:'Bongokuhle Hlongwane',pos:'ATT',club:'Minnesota United'},
+      {num:6,name:'Siyanda Xulu',pos:'DEF',club:'AEK Larnaca'},
+    ],
+    palmares:['🏅 2010 — 1er tour (organisateur)'],
+    debut:false },
+  { name:'Tunisie', flag:'🇹🇳', group:'F', conf:'CAF', titres:0, participations:6, coach:'Faouzi Benzarti', coachNat:'🇹🇳', coachDepuis:'2024',
+    joueurs:[
+      {num:8,name:'Ellyes Skhiri',pos:'MIL',club:'Eintracht Frankfurt'},
+      {num:9,name:'Wahbi Khazri',pos:'ATT',club:'Al-Qadsiah'},
+      {num:10,name:'Youssef Msakni',pos:'MIL',club:'Al-Arabi'},
+      {num:1,name:'Aymen Dahmen',pos:'GK',club:'Montpellier'},
+      {num:5,name:'Montassar Talbi',pos:'DEF',club:'Lorient'},
+      {num:3,name:'Ali Maaloul',pos:'DEF',club:'Al-Ahly'},
+      {num:7,name:'Naim Sliti',pos:'ATT',club:'Dijon'},
+      {num:11,name:'Seifeddine Jaziri',pos:'ATT',club:'Antalyaspor'},
+      {num:6,name:'Aïssa Laïdouni',pos:'MIL',club:'Mainz'},
+    ],
+    palmares:['🏅 1978 — 1re victoire africaine en CDM'],
+    debut:false },
+  { name:'Arabie Saoudite', flag:'🇸🇦', group:'H', conf:'AFC', titres:0, participations:6, coach:'Hervé Renard', coachNat:'🇫🇷', coachDepuis:'2023',
+    joueurs:[
+      {num:10,name:'Salem Al-Dawsari',pos:'ATT',club:'Al-Hilal'},
+      {num:1,name:'Mohammed Al-Owais',pos:'GK',club:'Al-Hilal'},
+      {num:7,name:'Saleh Al-Shehri',pos:'ATT',club:'Al-Hilal'},
+      {num:5,name:'Ali Al-Bulayhi',pos:'DEF',club:'Al-Hilal'},
+      {num:3,name:'Yasser Al-Shahrani',pos:'DEF',club:'Al-Hilal'},
+      {num:8,name:'Sami Al-Najei',pos:'MIL',club:'Al-Ittihad'},
+      {num:9,name:'Firas Al-Buraikan',pos:'ATT',club:'Al-Fateh'},
+      {num:11,name:'Mohammed Al-Buraik',pos:'DEF',club:'Al-Hilal'},
+      {num:6,name:'Abdulelah Al-Malki',pos:'MIL',club:'Al-Shabab'},
+    ],
+    palmares:['🏅 1994 — 16es de finale'],
+    debut:false },
+  { name:'Iran', flag:'🇮🇷', group:'G', conf:'AFC', titres:0, participations:7, coach:'Amir Ghalenoei', coachNat:'🇮🇷', coachDepuis:'2023',
+    joueurs:[
+      {num:9,name:'Mehdi Taremi',pos:'ATT',club:'Inter Milan'},
+      {num:7,name:'Sardar Azmoun',pos:'ATT',club:'Bayer Leverkusen'},
+      {num:1,name:'Alireza Beiranvand',pos:'GK',club:'Persepolis'},
+      {num:8,name:'Saeid Ezatolahi',pos:'MIL',club:'FC Augsburg'},
+      {num:11,name:'Saman Ghoddos',pos:'MIL',club:'Brentford'},
+      {num:5,name:'Milad Mohammadi',pos:'DEF',club:'AEK Athènes'},
+      {num:3,name:'Ehsan Hajsafi',pos:'DEF',club:'Panathinaikos'},
+      {num:10,name:'Ali Gholizadeh',pos:'ATT',club:'Charleroi'},
+      {num:6,name:'Morteza Pouraliganji',pos:'DEF',club:'Al-Sailiya'},
+    ],
+    palmares:['🏅 7 participations, jamais passé le 1er tour'],
+    debut:false },
+  { name:'Qatar', flag:'🇶🇦', group:'B', conf:'AFC', titres:0, participations:2, coach:'Marquez Lopez', coachNat:'🇪🇸', coachDepuis:'2024',
+    joueurs:[
+      {num:7,name:'Akram Afif',pos:'ATT',club:'Al-Sadd'},
+      {num:9,name:'Almoez Ali',pos:'ATT',club:'Al-Duhail'},
+      {num:10,name:'Hassan Al-Haydos',pos:'MIL',club:'Al-Sadd'},
+      {num:1,name:'Meshaal Barsham',pos:'GK',club:'Al-Sadd'},
+      {num:8,name:'Karim Boudiaf',pos:'MIL',club:'Al-Duhail'},
+      {num:5,name:'Bassam Al-Rawi',pos:'DEF',club:'Al-Duhail'},
+      {num:3,name:'Pedro Miguel',pos:'DEF',club:'Al-Sadd'},
+      {num:11,name:'Mohammed Muntari',pos:'ATT',club:'Al-Duhail'},
+      {num:6,name:'Abdulaziz Hatem',pos:'MIL',club:'Al-Rayyan'},
+    ],
+    palmares:['🏅 2022 — 1er tour (organisateur)'],
+    debut:false },
+  { name:'Irak', flag:'🇮🇶', group:'I', conf:'AFC', titres:0, participations:2, coach:'Jesús Casas', coachNat:'🇪🇸', coachDepuis:'2023',
+    joueurs:[
+      {num:9,name:'Aymen Hussein',pos:'ATT',club:'Al-Quwa Al-Jawiya'},
+      {num:10,name:'Mohanad Ali',pos:'ATT',club:'Al-Quwa Al-Jawiya'},
+      {num:7,name:'Humam Tariq',pos:'ATT',club:'Shabab Al-Ahli'},
+      {num:1,name:'Jalal Hassan',pos:'GK',club:'Al-Zawraa'},
+      {num:5,name:'Ali Adnan',pos:'DEF',club:'Auxerre'},
+      {num:8,name:'Amjed Attwan',pos:'MIL',club:'Al-Diwaniyah'},
+      {num:3,name:'Rebin Sulaka',pos:'DEF',club:'Hatta'},
+      {num:11,name:'Ahmed Yasin',pos:'MIL',club:'Al-Shorta'},
+      {num:6,name:'Saad Natiq',pos:'MIL',club:'Al-Zawraa'},
+    ],
+    palmares:['🏅 1986 — 1er tour'],
+    debut:false },
+  { name:"Côte d'Ivoire", flag:'🇨🇮', group:'E', conf:'CAF', titres:0, participations:4, coach:'Emerse Faé', coachNat:'🇨🇮', coachDepuis:'2023',
+    joueurs:[
+      {num:9,name:'Simon Adingra',pos:'ATT',club:'Brighton'},
+      {num:10,name:'Sébastien Haller',pos:'ATT',club:'Borussia Dortmund'},
+      {num:8,name:'Franck Kessié',pos:'MIL',club:'Al-Ahli'},
+      {num:11,name:'Wilfried Zaha',pos:'ATT',club:'Galatasaray'},
+      {num:7,name:'Nicolas Pépé',pos:'ATT',club:'Trabzonspor'},
+      {num:1,name:'Yahia Fofana',pos:'GK',club:'Chelsea'},
+      {num:5,name:'Odilon Kossounou',pos:'DEF',club:'Bayer Leverkusen'},
+      {num:3,name:'Ghislain Konan',pos:'DEF',club:'Reims'},
+      {num:6,name:'Jean-Philippe Gbamin',pos:'MIL',club:'Twente'},
+    ],
+    palmares:['🏅 4 participations sans passer le 1er tour'],
+    debut:false },
+  { name:'Nouvelle-Zélande', flag:'🇳🇿', group:'G', conf:'OFC', titres:0, participations:3, coach:'Darren Bazeley', coachNat:'🏴\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}', coachDepuis:'2024',
+    joueurs:[
+      {num:9,name:'Chris Wood',pos:'ATT',club:'Nottingham Forest'},
+      {num:1,name:'Oliver Sail',pos:'GK',club:'Nottingham Forest'},
+      {num:5,name:'Winston Reid',pos:'DEF',club:'Brentford'},
+      {num:10,name:'Liberato Cacace',pos:'DEF',club:'Empoli'},
+      {num:8,name:'Clayton Lewis',pos:'MIL',club:'Ulsan HD'},
+      {num:3,name:'Michael Boxall',pos:'DEF',club:'Minnesota United'},
+      {num:7,name:'Kosta Barbarouses',pos:'ATT',club:'Al-Hilal'},
+      {num:11,name:'Sarpreet Singh',pos:'MIL',club:'Jahn Regensburg'},
+      {num:6,name:'Tommy Smith',pos:'DEF',club:'Colorado Rapids'},
+    ],
+    palmares:['🏅 1982, 2010 — 1er tour'],
+    debut:false },
+  { name:'Haïti', flag:'🇭🇹', group:'C', conf:'CONCACAF', titres:0, participations:2, coach:'Marc Collat', coachNat:'🇫🇷', coachDepuis:'2023',
+    joueurs:[
+      {num:10,name:'Duckens Nazon',pos:'ATT',club:'Saint-Trond'},
+      {num:1,name:'Josué Duverger',pos:'GK',club:'Académie'},
+      {num:5,name:'Mechack Jérôme',pos:'DEF',club:'Nashville SC'},
+      {num:8,name:'Frantzdy Pierrot',pos:'MIL',club:'New England'},
+      {num:3,name:'Jems Geffrard',pos:'DEF',club:'Göztepe'},
+      {num:7,name:'Wilde-Donald Guerrier',pos:'ATT',club:'Académie'},
+      {num:9,name:'Gesner Onelus',pos:'ATT',club:'Académie'},
+      {num:11,name:'Alteir Ignace',pos:'MIL',club:'Académie'},
+      {num:6,name:'Carlens Arcus',pos:'DEF',club:'Académie'},
+    ],
+    palmares:['🏅 1974 — 1er tour'],
+    debut:false },
+  { name:'Cap-Vert', flag:'🇨🇻', group:'H', conf:'CAF', titres:0, participations:1, coach:'Pedro Brito', coachNat:'🇨🇻', coachDepuis:'2023',
+    joueurs:[
+      {num:1,name:'Vozinha',pos:'GK',club:'Celta Vigo'},
+      {num:7,name:'Jamiro Monteiro',pos:'MIL',club:'Club Bruges'},
+      {num:5,name:'Roberto Lopes',pos:'DEF',club:'Shamrock Rovers'},
+      {num:8,name:'Garry Rodrigues',pos:'MIL',club:'Galatasaray'},
+      {num:9,name:'Ryan Mendes',pos:'ATT',club:'UD Leiria'},
+      {num:3,name:'Stopira',pos:'DEF',club:'Sporting CP'},
+      {num:10,name:'Nanu',pos:'DEF',club:'Porto'},
+      {num:11,name:'Hélder Dala',pos:'ATT',club:'Grasshopper'},
+      {num:6,name:'Fortes',pos:'DEF',club:'Nacional'},
+    ],
+    palmares:['🌟 2026 — Première Coupe du Monde !'],
+    debut:true },
+  { name:'Ouzbékistan', flag:'🇺🇿', group:'K', conf:'AFC', titres:0, participations:1, coach:'Srecko Katanec', coachNat:'🇸🇮', coachDepuis:'2020',
+    joueurs:[
+      {num:3,name:'Eldor Shomurodov',pos:'ATT',club:'Roma'},
+      {num:7,name:'Jaloliddin Masharipov',pos:'ATT',club:'Pakhtakor'},
+      {num:1,name:'Utkir Yusupov',pos:'GK',club:'Pakhtakor'},
+      {num:5,name:'Sherzod Nasimov',pos:'DEF',club:'Pakhtakor'},
+      {num:8,name:'Otabek Shukurov',pos:'MIL',club:'Pakhtakor'},
+      {num:10,name:'Jasur Yakhshiboev',pos:'MIL',club:'Pakhtakor'},
+      {num:9,name:'Bobur Abdixoliqov',pos:'ATT',club:'Lokomotiv'},
+      {num:11,name:'Alisher Djaksybekov',pos:'MIL',club:'Nasaf'},
+      {num:6,name:'Rustam Yusupov',pos:'MIL',club:'Pakhtakor'},
+    ],
+    palmares:['🌟 2026 — Première Coupe du Monde !'],
+    debut:true },
+  { name:'Jordanie', flag:'🇯🇴', group:'J', conf:'AFC', titres:0, participations:1, coach:'Hussein Ammouta', coachNat:'🇲🇦', coachDepuis:'2023',
+    joueurs:[
+      {num:7,name:'Moussa Al-Taamari',pos:'ATT',club:'Montpellier'},
+      {num:9,name:'Yazan Al-Naimat',pos:'ATT',club:'Antalyaspor'},
+      {num:1,name:'Yazeed Abulaila',pos:'GK',club:'Al-Faisaly'},
+      {num:5,name:'Ahmad Hejazi',pos:'DEF',club:'Istiklol'},
+      {num:8,name:'Noor Al-Rawabdeh',pos:'MIL',club:'Al-Jazeera'},
+      {num:10,name:'Musa Suleiman',pos:'MIL',club:'Al-Faisaly'},
+      {num:3,name:"Baha' Abdelrahman",pos:'DEF',club:'Al-Wehdat'},
+      {num:11,name:'Ahmad Quandil',pos:'ATT',club:'Persépolis'},
+      {num:6,name:'Ehsan Haddad',pos:'DEF',club:'Al-Wehdat'},
+    ],
+    palmares:['🌟 2026 — Première Coupe du Monde !'],
+    debut:true },
+  { name:'Curaçao', flag:'🇨🇼', group:'E', conf:'CONCACAF', titres:0, participations:1, coach:'Remko Bicentini', coachNat:'🇨🇼', coachDepuis:'2015',
+    joueurs:[
+      {num:11,name:'Sheraldo Becker',pos:'ATT',club:'Union Berlin'},
+      {num:8,name:'Leandro Bacuna',pos:'MIL',club:'Middlesbrough'},
+      {num:1,name:'Eloy Room',pos:'GK',club:'Columbus Crew'},
+      {num:7,name:'Gilson Tavares',pos:'ATT',club:'Feyenoord'},
+      {num:9,name:'Jarchinio Antonia',pos:'ATT',club:'Heracles'},
+      {num:5,name:'Rangelo Janga',pos:'ATT',club:'Helmond Sport'},
+      {num:3,name:'Juriën Gaari',pos:'DEF',club:'Al-Faisaly'},
+      {num:10,name:'Cuco Martina',pos:'DEF',club:'retraité'},
+      {num:6,name:'Etienne Reijnen',pos:'DEF',club:'Zulte Waregem'},
+    ],
+    palmares:['🌟 2026 — Première Coupe du Monde !'],
+    debut:true },
+];
+
+// ── NATIONS RENDER ──
+let currentConf = 'ALL';
+let currentSearch = '';
+
+function renderNationsGrid() {
+  const grid = document.getElementById('nations-grid');
+  grid.innerHTML = '';
+  let visible = 0;
+  const sorted = [...nationsData].sort((a,b) => a.name.localeCompare(b.name, 'fr'));
+  sorted.forEach(nation => {
+    const card = document.createElement('div');
+    card.className = 'nation-card';
+    card.dataset.name = nation.name.toLowerCase();
+    card.dataset.conf = nation.conf;
+    card.innerHTML = `
+      <div class="nc-flag">${nation.flag}</div>
+      <div class="nc-name">${nation.name}</div>
+      <div class="nc-group">Groupe ${nation.group}</div>
+      <div class="nc-conf">${nation.conf}</div>
+      ${nation.debut ? '<div class="nc-debut">⭐ 1ère CDM</div>' : ''}
+    `;
+    card.onclick = () => showNationFiche(nation);
+    applyNationFilter(card);
+    if (!card.classList.contains('hidden')) visible++;
+    grid.appendChild(card);
+  });
+  document.getElementById('nations-count').textContent = visible + ' équipes';
+}
+
+function applyNationFilter(card) {
+  const matchConf = currentConf === 'ALL' || card.dataset.conf === currentConf;
+  const matchSearch = card.dataset.name.includes(currentSearch);
+  card.classList.toggle('hidden', !(matchConf && matchSearch));
+}
+
+function filterNations() {
+  currentSearch = document.getElementById('nationsSearch').value.toLowerCase().trim();
+  let visible = 0;
+  document.querySelectorAll('.nation-card').forEach(card => {
+    applyNationFilter(card);
+    if (!card.classList.contains('hidden')) visible++;
+  });
+  document.getElementById('nations-count').textContent = visible + ' équipes';
+}
+
+function filterConf(conf, btn) {
+  currentConf = conf;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterNations();
+}
+
+function showNationFiche(nation) {
+  const playersHtml = nation.joueurs.map(p => `
+    <div class="player-row">
+      <div class="player-num">${p.num}</div>
+      <div class="player-info"><div class="pname">${p.name}</div><div class="pclub">${p.club}</div></div>
+      <div class="player-pos pos-${p.pos}">${p.pos}</div>
+    </div>
+  `).join('');
+  const palmHtml = nation.palmares.map(p => `<div class="palmares-item"><span class="p-trophy">🏅</span><span>${p}</span></div>`).join('');
+
+  document.getElementById('fiche-content').innerHTML = `
+    <button class="fiche-back" onclick="closeFiche()">← Retour aux nations</button>
+    <div class="fiche-header">
+      <div class="fiche-flag">${nation.flag}</div>
+      <div class="fiche-info">
+        <h2>${nation.name}</h2>
+        <div class="fiche-meta">
+          <span class="fiche-tag gold">Groupe ${nation.group}</span>
+          <span class="fiche-tag muted">${nation.conf}</span>
+          ${nation.debut ? '<span class="fiche-tag red">⭐ 1ère CDM</span>' : ''}
+          ${nation.titres > 0 ? '<span class="fiche-tag gold">🏆 ' + nation.titres + ' titre' + (nation.titres>1?'s':'') + '</span>' : ''}
+        </div>
+        <div class="fiche-stats">
+          <div class="fiche-stat"><div class="fs-num">${nation.participations}</div><div class="fs-lbl">CDM</div></div>
+          <div class="fiche-stat"><div class="fs-num">${nation.titres}</div><div class="fs-lbl">Titres</div></div>
+          <div class="fiche-stat"><div class="fs-num">${nation.joueurs.length}</div><div class="fs-lbl">Joueurs</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="fiche-section-title">🧑‍💼 Entraîneur</div>
+    <div class="coach-card">
+      <div class="coach-icon">${nation.coachNat}</div>
+      <div><div class="coach-name">${nation.coach}</div><div class="coach-detail">En poste depuis ${nation.coachDepuis}</div></div>
+    </div>
+    <div class="fiche-section-title">⭐ Joueurs clés</div>
+    <div class="players-grid">${playersHtml}</div>
+    <div class="fiche-section-title">🏆 Palmarès</div>
+    <div class="palmares-list">${palmHtml}</div>
+    <div class="fiche-section-title">⚽ Matchs de groupe</div>
+    <div class="matches-list" id="fiche-matches"></div>
+    <div style="height:40px;"></div>
+  `;
+
+  const myMatches = groupMatches.filter(m => m.t1 === nation.name || m.t2 === nation.name);
+  const fm = document.getElementById('fiche-matches');
+  myMatches.forEach(m => { fm.innerHTML += matchRowHTML(m, false, nation.name); });
+
+  document.getElementById('nations-grid').style.display = 'none';
+  document.querySelector('.nations-toolbar').style.display = 'none';
+  document.querySelector('#nations .phase-header').style.display = 'none';
+  document.getElementById('nation-fiche').style.display = 'block';
+  window.scrollTo({ top: document.querySelector('.tabs-wrap').offsetTop, behavior:'smooth' });
+}
+
+function closeFiche() {
+  document.getElementById('nation-fiche').style.display = 'none';
+  document.getElementById('nations-grid').style.display = 'grid';
+  document.querySelector('.nations-toolbar').style.display = 'flex';
+  document.querySelector('#nations .phase-header').style.display = 'flex';
+}
+
 buildPicker();
 renderGroups();
 renderGroupMatchesPage();
 renderKnockout();
+renderNationsGrid();
 </script>
 </body>
 </html>
